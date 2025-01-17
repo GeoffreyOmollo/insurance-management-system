@@ -7,7 +7,7 @@ This project is an Insurance Policy Management System using Angular and C# (.NET
 - Add, edit, delete and view insurance coverages. Coverages are the things that a given insurance will cover
 - Add, edit, delete and view insurance exclusions. Exclusions are the things that a given insurance will not cover
 - Add, edit, delete and view insurance types. These are the different insurances that a person (policy holder) can choose and apply for. An insurance type specifies its insurance coverage and insurance exclusion.
-- Add, edit, delete and view the chosen insurance policies. An insurance policy has the policy holder, the insurance type for the policy holder, the amount the policy holder is deducted monthly and the policy limit amount.
+- Add, edit, delete and view the insurance policies. An insurance policy has the policy holder's name, the insurance type for the policy holder, the amount the policy holder is deducted monthly and the policy limit amount (the maximum amount the insurance company will pay out under the policy)
 
 ## Tech Stack Used
 
