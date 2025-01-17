@@ -75,4 +75,58 @@ Purpose: Protects businesses against risks like property damage, liability claim
 
 These are the screen shots showing the app in action:
 
+<img width="960" alt="0) API" src="https://github.com/user-attachments/assets/e09b256e-b7eb-4428-8f6b-1157bafb47dd" />
+
+-----
+
+<img width="960" alt="1) Exclusion" src="https://github.com/user-attachments/assets/72b62885-ea42-4c0b-b2c7-ebb7145ec0b0" />
+
+-----
+
+<img width="960" alt="2) View exclusion --" src="https://github.com/user-attachments/assets/8e39bbe0-f89d-4206-bca2-a0a14e4ac43d" />
+
+-----
+
+<img width="960" alt="3) Adding a new exclusion" src="https://github.com/user-attachments/assets/950826c7-484e-4389-8523-87dd19bc8bc1" />
+
+-----
+
+<img width="958" alt="4) Coverage" src="https://github.com/user-attachments/assets/d7fdcd63-df0d-4b63-8da3-662c53cf22f0" />
+
+-----
+
+<img width="960" alt="5) Insurancetype" src="https://github.com/user-attachments/assets/38277574-a799-4b7f-ac18-109b84774b8e" />
+
+-----
+
+<img width="958" alt="6) View" src="https://github.com/user-attachments/assets/e17a1083-e91d-4f84-b586-e619bf4360f6" />
+
+-----
+
+<img width="960" alt="7) Add" src="https://github.com/user-attachments/assets/1e4f2fa2-f4a2-4585-9d5e-32b6f72ee2bd" />
+
+-----
+
+<img width="960" alt="8) Update" src="https://github.com/user-attachments/assets/8e109841-b0c5-4e62-abd9-39363deaaf00" />
+
+-----
+
+<img width="960" alt="9) Insurancepolicy" src="https://github.com/user-attachments/assets/dcffa98f-b1b3-47e6-b70c-ee63b75f320a" />
+
+-----
+
+<img width="960" alt="10) Details" src="https://github.com/user-attachments/assets/714bc8e9-2f14-43f1-922a-240da0bab8e7" />
+
+-----
+
+<img width="960" alt="11) Add" src="https://github.com/user-attachments/assets/8b8b713f-7e26-4240-b95a-8ca13f11f7cb" />
+
+-----
+
+<img width="960" alt="12) Update" src="https://github.com/user-attachments/assets/f1a6c0cb-89ae-46c6-b281-a11b01054b74" />
+
+-----
+
+End of screen shots
+
 
