@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <app-page-title title="Update Exclusion"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="card-title">Update Exclusion</h4>
+
+          <form [formGroup]="exclusionForm" (ngSubmit)="onSubmit()">
+
+            <div class="mb-3 row">
+              <label for="exclusionDescription" class="col-md-2 col-form-label">Exclusion Description</label>
+              <div class="col-md-10">
+                <input
+                  class="form-control"
+                  formControlName="exclusionDescription"
+                  id="exclusionDescription"
+                  placeholder="Enter exclusion description">
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary" [disabled]="exclusionForm.invalid">Update Exclusion</button>
+
+            <!-- Cancel Button -->
+            <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

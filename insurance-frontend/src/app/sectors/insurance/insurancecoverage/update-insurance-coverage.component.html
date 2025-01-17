@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <app-page-title title="Update Insurance Coverage"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="card-title">Update Insurance Coverage</h4>
+
+          <form [formGroup]="coverageForm" (ngSubmit)="onSubmit()">
+
+            <!-- Coverage Description -->
+            <div class="mb-3 row">
+              <label for="coverageDescription" class="col-md-2 col-form-label">Coverage Description</label>
+              <div class="col-md-10">
+                <input
+                  class="form-control"
+                  formControlName="coverageDescription"
+                  id="coverageDescription"
+                  placeholder="Enter coverage description"
+                />
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary" [disabled]="coverageForm.invalid">Update Coverage</button>
+
+            <!-- Cancel Button -->
+            <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

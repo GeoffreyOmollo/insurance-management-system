@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <app-page-title title="Insurance Policies"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="row mb-2">
+            <!-- Search Box -->
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term">
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add Policy Button -->
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-success btn-rounded mb-2 me-2" [routerLink]="['/insurancepolicy/add']">
+                  <i class="mdi mdi-plus mr-1"></i> Add New Policy
+                </button>
+              </div>
+            </div>
+
+            <!-- Insurance Policy data -->
+            <div class="table-responsive">
+              <table id="basic-datatable"
+                class="table table-bordered dt-responsive nowrap no-footer dtr-inline">
+
+                <thead>
+                  <tr>
+                    <th>Policy Holder</th>
+                    <th>Insurance Type</th>
+                    <th>Premium Amount</th>
+                    <th>Action</th>
+                    <th>View Details</th>
+                  </tr>
+                </thead>
+
+                <tbody *ngFor="let policy of policyForms.controls; let i=index" [formGroup]="policy">
+                  <tr>
+                    <td>
+                      <input class="form-control" formControlName="policyHolder">
+                    </td>
+                    <td>
+                      {{ getInsuranceTypeName(policy.get('insuranceTypeID')?.value) }}
+                    </td>
+                    <td>
+                      <input class="form-control" formControlName="premiumAmount">
+                    </td>
+                    <!-- Update Button -->
+                    <td>
+                      <button type="button" class="btn btn-warning btn-sm btn-rounded" [routerLink]="['/insurancepolicy/update', policy.get('insurancePolicyID').value]">
+                        Update
+                      </button>
+                    </td>
+                    <!-- Button trigger modal -->
+                    <td>
+                      <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="openModal(content, policy.value)">
+                        View Details
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Modal Template -->
+              <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h5 class="modal-title">Policy Details</h5>
+                  <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                  <p><strong>Policy Holder:</strong> {{selectedPolicy?.policyHolder}}</p>
+                  <p><strong>Insurance Type:</strong> {{ getInsuranceTypeName(selectedPolicy?.insuranceTypeID) }}</p>
+                  <p><strong>Premium Amount:</strong> {{selectedPolicy?.premiumAmount | currency}}</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-danger" (click)="onDelete(selectedPolicy?.insurancePolicyID)">Delete Policy</button>
+                  <button class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+                </div>
+              </ng-template>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

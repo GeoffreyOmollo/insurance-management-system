@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <app-page-title title="Exclusions"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="row mb-2">
+            <!-- Search Box -->
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term">
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add Exclusion Button -->
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-success btn-rounded mb-2 me-2" [routerLink]="['/exclusion/add']">
+                  <i class="mdi mdi-plus mr-1"></i> Add New Exclusion
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exclusion Data -->
+          <div class="table-responsive mb-0">
+            <table class="table table-centered table-nowrap">
+              <thead class="table-light">
+                <tr>
+                  <th style="width: 20px;">
+                    <div class="form-check font-size-16 align-middle">
+                      <input class="form-check-input" type="checkbox" id="exclusionCheckAll">
+                      <label class="form-check-label" for="exclusionCheckAll"></label>
+                    </div>
+                  </th>
+                  <th class="align-middle">Exclusion Description</th>
+                  <th class="align-middle">Action</th>
+                  <th class="align-middle">View Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let exclusion of exclusionForms.controls; let i=index" [formGroup]="exclusion">
+                  <td>
+                    <div class="form-check font-size-16">
+                      <input class="form-check-input" type="checkbox" id="exclusionCheck{{i}}">
+                      <label class="form-check-label" for="exclusionCheck{{i}}"></label>
+                    </div>
+                  </td>
+                  <td>
+                    <input class="form-control" formControlName="exclusionDescription">
+                  </td>
+                  <!-- Update Button -->
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm btn-rounded" [routerLink]="['/exclusion/update', exclusion.get('exclusionID').value]">
+                      Update
+                    </button>
+                  </td>
+                  <!-- Button trigger modal -->
+                  <td>
+                    <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="openModal(content, exclusion.value)">
+                      View Details
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Modal Template -->
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h5 class="modal-title">Exclusion Details</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Exclusion Description:</strong> {{selectedExclusion?.exclusionDescription}}</p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger" (click)="onDelete(selectedExclusion?.exclusionID)">Delete Exclusion</button>
+                <button class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+              </div>
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

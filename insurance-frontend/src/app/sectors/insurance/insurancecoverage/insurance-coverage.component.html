@@ -1,0 +1,91 @@
+<div class="container-fluid">
+  <app-page-title title="Insurance Coverages"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="row mb-2">
+            <!-- Search Box -->
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term">
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add Insurance Coverage Button -->
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-success btn-rounded mb-2 me-2" [routerLink]="['/insurancecoverage/add']">
+                  <i class="mdi mdi-plus mr-1"></i> Add New Insurance Coverage
+                </button>
+              </div>
+            </div>
+
+          <!-- Insurance Coverage data -->
+          <div class="table-responsive mb-0">
+            <table class="table table-centered table-nowrap">
+              <thead class="table-light">
+                <tr>
+                  <th style="width: 20px;">
+                    <div class="form-check font-size-16 align-middle">
+                      <input class="form-check-input" type="checkbox" id="coverageCheckAll">
+                      <label class="form-check-label" for="coverageCheckAll"></label>
+                    </div>
+                  </th>
+                  <th class="align-middle">Coverage Description</th>
+                  <th class="align-middle">Action</th>
+                  <th class="align-middle">View Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let coverage of coverageForms.controls; let i=index" [formGroup]="coverage">
+                  <td>
+                    <div class="form-check font-size-16">
+                      <input class="form-check-input" type="checkbox" id="coverageCheck{{i}}">
+                      <label class="form-check-label" for="coverageCheck{{i}}"></label>
+                    </div>
+                  </td>
+                  <td>
+                    <input class="form-control" formControlName="coverageDescription">
+                  </td>
+                  <!-- Update Button -->
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm btn-rounded" [routerLink]="['/insurancecoverage/update', coverage.get('insuranceCoverageID').value]">
+                      Update
+                    </button>
+                  </td>
+                  <!-- Button trigger modal -->
+                  <td>
+                    <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="openModal(content, coverage.value)">
+                      View Details
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Modal Template -->
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h5 class="modal-title">Insurance Coverage Details</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Coverage Description:</strong> {{selectedCoverage?.coverageDescription}}</p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger" (click)="onDelete(selectedCoverage?.insuranceCoverageID)">Delete Coverage</button>
+                <button class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+              </div>
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

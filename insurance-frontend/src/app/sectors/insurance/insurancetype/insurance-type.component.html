@@ -1,0 +1,104 @@
+<div class="container-fluid">
+  <app-page-title title="Insurance Types"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="row mb-2">
+            <!-- Search Box -->
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term">
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add Insurance Type Button -->
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-success btn-rounded mb-2 me-2" [routerLink]="['/insurancetype/add']">
+                  <i class="mdi mdi-plus mr-1"></i> Add New Insurance Type
+                </button>
+              </div>
+            </div>
+
+          <!-- Insurance Type data -->
+          <div class="table-responsive">
+            <table id="insurance-type-datatable" class="table table-bordered dt-responsive nowrap no-footer dtr-inline">
+
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Deductible</th>
+                  <th>Policy Limit</th>
+                  <th>Coverage</th>
+                  <th>Exclusion</th>
+                  <th>Action</th>
+                  <th>View Details</th>
+                </tr>
+              </thead>
+
+              <tbody *ngFor="let insuranceType of insuranceTypeForms.controls; let i=index" [formGroup]="insuranceType">
+                <tr>
+                  <td>
+                    <input class="form-control" formControlName="insuranceDescription">
+                  </td>
+                  <td>
+                    <input class="form-control" formControlName="deductible" type="number">
+                  </td>
+                  <td>
+                    <input class="form-control" formControlName="policyLimitAmount" type="number">
+                  </td>
+                  <td>
+                    {{ getInsuranceCoverageName(insuranceType.get('insuranceCoverageID')?.value) }}
+                  </td>
+                  <td>
+                    {{ getExclusionName(insuranceType.get('exclusionID')?.value) }}
+                  </td>
+                  <!-- Update Button -->
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm btn-rounded" [routerLink]="['/insurancetype/update', insuranceType.get('insuranceTypeID').value]">
+                      Update
+                    </button>
+                  </td>
+                  <!-- Button trigger modal -->
+                  <td>
+                    <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="openModal(content, insuranceType.value)">
+                      View Details
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Modal Template -->
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h5 class="modal-title">Insurance Type Details</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Description:</strong> {{selectedInsuranceType?.insuranceDescription}}</p>
+                <p><strong>Deductible:</strong> {{selectedInsuranceType?.deductible | currency}}</p>
+                <p><strong>Policy Limit:</strong> {{selectedInsuranceType?.policyLimitAmount | currency}}</p>
+                <p><strong>Coverage:</strong> {{ getInsuranceCoverageName(selectedInsuranceType?.insuranceCoverageID) }}</p>
+                <p><strong>Exclusion:</strong> {{ getExclusionName(selectedInsuranceType?.exclusionID) }}</p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger" (click)="onDelete(selectedInsuranceType?.insuranceTypeID)">Delete Insurance Type</button>
+                <button class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+              </div>
+            </ng-template>
+
+          </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

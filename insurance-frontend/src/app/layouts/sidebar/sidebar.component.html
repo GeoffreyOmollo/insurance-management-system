@@ -1,0 +1,31 @@
+<!-- ========== Left Sidebar Start ========== -->
+
+<ng-template #contentTemplate>
+  <!--- Sidemenu -->
+  <div id="sidebar-menu">
+    <!-- Left Menu Start -->
+    <ul class="list-unstyled" id="side-menu">
+      <!-- Menu Items -->
+      <ng-container *ngFor="let item of menuItems">
+        <!-- Menu Title -->
+        <li class="menu-title" *ngIf="item.isTitle">{{ item.label }}</li>
+        
+        <!-- Menu Item -->
+      <li *ngIf="!item.isTitle">
+        <a [routerLink]="item.link" class="side-nav-link-ref" routerLinkActive="active">
+          {{ item.label }}
+        </a>
+      </li>
+		
+      </ng-container>
+    </ul>
+  </div>
+</ng-template>
+
+<!-- Sidebar -->
+<div class="vertical-menu">
+  <div class="h-100">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </div>
+</div>
+<!-- Left Sidebar End -->

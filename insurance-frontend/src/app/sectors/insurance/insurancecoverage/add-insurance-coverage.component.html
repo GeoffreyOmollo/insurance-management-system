@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <app-page-title title="Add Insurance Coverage"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="card-title">Add a New Insurance Coverage</h4>
+
+          <!-- Input Fields for Insurance Coverage -->
+          <form [formGroup]="coverageForm" (ngSubmit)="onSubmit()">
+
+            <div class="mb-3 row">
+              <label for="coverageDescription" class="col-md-2 col-form-label">Coverage Description</label>
+              <div class="col-md-10">
+                <input
+                  class="form-control"
+                  formControlName="coverageDescription"
+                  id="coverageDescription"
+                  placeholder="Enter coverage description"
+                />
+              </div>
+            </div>
+
+            <!-- Buttons Section -->
+            <div class="d-flex justify-content-between">
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary" [disabled]="coverageForm.invalid">Save Coverage</button>
+
+              <!-- Cancel Button -->
+              <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+            </div>
+            
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

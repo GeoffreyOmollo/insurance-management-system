@@ -1,0 +1,18 @@
+table th,
+table td {
+  text-align: left; /* Align text horizontally to the left */
+  vertical-align: middle; /* Vertically center the text */
+}
+
+/* Remove input borders and background */
+table input.form-control {
+  border: none; /* Remove the border around the input */
+  background-color: transparent; /* Remove the background of the input */
+  padding: 0; /* Remove padding to align input with table */
+  box-shadow: none; /* Remove any box shadow */
+  outline: none; /* Remove the outline when focused */
+  text-align: left; /* Align text horizontally to the left */
+  vertical-align: middle; /* Vertically center the input text */
+  line-height: normal; /* Ensure normal line height */
+  height: 100%; /* Stretch input to fill the cell */
+}

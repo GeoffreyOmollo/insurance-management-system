@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <app-page-title title="Update Insurance Type"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="card-title">Update Insurance Type</h4>
+
+          <form [formGroup]="insuranceTypeForm" (ngSubmit)="onSubmit()">
+
+            <!-- Insurance Coverage Dropdown -->
+            <div class="mb-3 row">
+              <label for="insuranceCoverageID" class="col-md-2 col-form-label">Insurance Coverage</label>
+              <div class="col-md-10">
+                <select class="form-select" formControlName="insuranceCoverageID" id="insuranceCoverageID">
+                  <option value="" disabled>Select insurance coverage</option>
+                  <option *ngFor="let coverage of insuranceCoverages" [value]="coverage.insuranceCoverageID">
+                    {{ coverage.coverageDescription }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Exclusion Dropdown -->
+            <div class="mb-3 row">
+              <label for="exclusionID" class="col-md-2 col-form-label">Exclusion</label>
+              <div class="col-md-10">
+                <select class="form-select" formControlName="exclusionID" id="exclusionID">
+                  <option value="" disabled>Select exclusion</option>
+                  <option *ngFor="let exclusion of exclusions" [value]="exclusion.exclusionID">
+                    {{ exclusion.exclusionDescription }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Insurance Description -->
+            <div class="mb-3 row">
+              <label for="insuranceDescription" class="col-md-2 col-form-label">Description</label>
+              <div class="col-md-10">
+                <input class="form-control" formControlName="insuranceDescription" id="insuranceDescription" placeholder="Enter insurance description">
+              </div>
+            </div>
+
+            <!-- Deductible -->
+            <div class="mb-3 row">
+              <label for="deductible" class="col-md-2 col-form-label">Deductible</label>
+              <div class="col-md-10">
+                <input class="form-control" type="number" formControlName="deductible" id="deductible" placeholder="Enter deductible amount">
+              </div>
+            </div>
+
+            <!-- Policy Limit Amount -->
+            <div class="mb-3 row">
+              <label for="policyLimitAmount" class="col-md-2 col-form-label">Policy Limit</label>
+              <div class="col-md-10">
+                <input class="form-control" type="number" formControlName="policyLimitAmount" id="policyLimitAmount" placeholder="Enter policy limit amount">
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary" [disabled]="insuranceTypeForm.invalid">Update Insurance Type</button>
+
+            <!-- Cancel Button -->
+            <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

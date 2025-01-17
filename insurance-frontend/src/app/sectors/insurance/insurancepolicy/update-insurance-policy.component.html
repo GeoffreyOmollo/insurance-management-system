@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <app-page-title title="Update Insurance Policy"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="card-title">Update Insurance Policy</h4>
+
+          <form [formGroup]="insurancePolicyForm" (ngSubmit)="onSubmit()">
+
+            <!-- Policy Holder -->
+            <div class="mb-3 row">
+              <label for="policyHolder" class="col-md-2 col-form-label">Policy Holder</label>
+              <div class="col-md-10">
+                <input class="form-control" formControlName="policyHolder" id="policyHolder" placeholder="Enter policy holder's name">
+              </div>
+            </div>
+
+            <!-- Insurance Type -->
+            <div class="mb-3 row">
+              <label for="insuranceTypeID" class="col-md-2 col-form-label">Insurance Type</label>
+              <div class="col-md-10">
+                <select class="form-select" formControlName="insuranceTypeID" id="insuranceTypeID">
+                  <option value="" disabled>Select an insurance type</option>
+                  <option *ngFor="let type of insuranceTypes" [value]="type.insuranceTypeID">
+                    {{ type.insuranceTypeName }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Premium Amount -->
+            <div class="mb-3 row">
+              <label for="premiumAmount" class="col-md-2 col-form-label">Premium Amount</label>
+              <div class="col-md-10">
+                <input class="form-control" type="number" formControlName="premiumAmount" id="premiumAmount" placeholder="Enter premium amount">
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary" [disabled]="insurancePolicyForm.invalid">Update Insurance Policy</button>
+
+            <!-- Cancel Button -->
+            <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
